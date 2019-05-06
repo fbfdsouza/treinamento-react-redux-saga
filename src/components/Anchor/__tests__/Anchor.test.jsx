@@ -37,7 +37,7 @@ describe('<Anchor /> Tests', () => {
 
   it('should call onClick handler when click on anchor', (done) => {
     const wrapper = shallow(<Anchor {...commonProps} />);
-    const anchor = wrapper.find('a').first();
+    const anchor = wrapper.dive().find('a').first();
     anchor.simulate('click');
     expect(commonProps.onClick.mock.calls.length).toBe(1);
     done();

@@ -5,10 +5,7 @@ import View from '../View';
 const minimalProps = {
   title: 'View Title',
   header: <div className="header" />,
-  sidebar: <div className="sidebar" />,
   footer: <div className="footer" />,
-  sidebarIsOpen: false,
-  closeSidebarFn: () => {},
 };
 
 describe('<View /> Tests', () => {
@@ -30,23 +27,5 @@ describe('<View /> Tests', () => {
     done();
   });
 
-  it('should render correctly with sidebar opened', (done) => {
-    const wrapper = shallow(<View {...minimalProps} sidebarIsOpen />);
-    expect(wrapper).toMatchSnapshot();
-    done();
-  });
-
-  it('should call closeSidebarFn when click on sidebar backdrop', (done) => {
-    const closeSidebarFnMock = jest.fn();
-    const wrapper = shallow(<View
-      {...minimalProps}
-      sidebarIsOpen
-      closeSidebarFn={closeSidebarFnMock}
-    />);
-    const sidebarBackdrop = wrapper.find('.sidebarBackdrop');
-    sidebarBackdrop.simulate('click');
-    expect(closeSidebarFnMock.mock.calls.length).toBe(1);
-    done();
-  });
 });
 

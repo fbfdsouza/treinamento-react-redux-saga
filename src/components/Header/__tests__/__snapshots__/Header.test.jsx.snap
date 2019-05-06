@@ -18,17 +18,6 @@ exports[`<Header /> Tests should render correctly with minimal props 1`] = `
         }
       >
         <MenuItem
-          href="#"
-          onClick={[Function]}
-          style={
-            Object {
-              "container": "menuItem__container",
-            }
-          }
-        >
-          <FaBars />
-        </MenuItem>
-        <MenuItem
           href="/"
           onClick={[Function]}
           style={

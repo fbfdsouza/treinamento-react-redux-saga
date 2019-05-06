@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { FaBars } from 'react-icons/lib/fa';
 import Menu from '../Menu';
 import MenuItem from '../MenuItem';
 import menuStyle from '../Menu/style/Menu.scss';
@@ -8,7 +7,7 @@ import menuItemStyle from '../MenuItem/style/MenuItem.scss';
 
 import Style from './style/Header.scss';
 
-class Header extends Component {
+class Header extends PureComponent {
   goToHome = (e) => {
     const { pushFn } = this.props;
     e.preventDefault();
@@ -27,24 +26,12 @@ class Header extends Component {
     pushFn('/signup');
   }
 
-  openSidebar = (e) => {
-    const { openSidebarFn } = this.props;
-    e.preventDefault();
-    openSidebarFn();
-  }
-
   render() {
     return (
       <header className={Style.root}>
         <div className={Style.container}>
           <div className={Style.contentLeftContainer}>
             <Menu style={{ ...menuStyle, root: Style.menu__root }}>
-              <MenuItem
-                onClick={this.openSidebar}
-                style={{ ...menuItemStyle, container: Style.menuItem__container }}
-              >
-                <FaBars />
-              </MenuItem>
               <MenuItem
                 href="/"
                 onClick={this.goToHome}
@@ -78,7 +65,6 @@ class Header extends Component {
 
 Header.propTypes = {
   pushFn: PropTypes.func.isRequired,
-  openSidebarFn: PropTypes.func.isRequired,
 };
 
 export default Header;

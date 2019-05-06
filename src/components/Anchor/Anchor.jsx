@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { pure } from 'recompose';
 import Style from './style/Anchor.scss';
 
 const Anchor = ({
@@ -28,4 +29,4 @@ Anchor.propTypes = {
   ]).isRequired,
 };
 
-export default Anchor;
+export default pure(Anchor);

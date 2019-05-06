@@ -4,7 +4,7 @@ import { FaBars } from 'react-icons/lib/fa';
 import MenuItem from '../../components/MenuItem';
 import HeaderContainer from '../HeaderContainer';
 import { createReduxTestStore } from '../../utils/test';
-import { ui, auth, router } from '../../redux';
+import { ui, router } from '../../redux';
 
 describe('<HeaderContainer /> Tests', () => {
   const eventMockObject = {
@@ -20,31 +20,6 @@ describe('<HeaderContainer /> Tests', () => {
     const wrapper = shallow(<HeaderContainer store={testStore} />);
     expect(wrapper).toHaveLength(1);
     done();
-  });
-
-  it('should open sidebar when click on hamburguer menu item', (done) => {
-    const testStore = createReduxTestStore({
-      configs: {
-        initialState: {
-          ui: {
-            sidebarIsOpen: false,
-          },
-        },
-      },
-    });
-    const wrapper = shallow(<HeaderContainer store={testStore} />);
-    testStore.when(ui.actions.OPEN_SIDEBAR, () => {
-      const sidebarIsOpen = testStore.select(ui.selectors.sidebarIsOpen);
-      expect(sidebarIsOpen).toBe(true);
-      done();
-    });
-
-    const menuItem = wrapper.dive().shallow()
-    .find(MenuItem)
-    .filterWhere(item => item.children().type() === FaBars);
-
-    const menuItemAnchor = menuItem.dive().shallow().find('a').first();
-    menuItemAnchor.simulate('click', eventMockObject);
   });
 
   it('should navigate to Home page when click on menu item', (done) => {

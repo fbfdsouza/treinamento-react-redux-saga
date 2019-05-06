@@ -4,7 +4,7 @@
     "window": true,
     "document": true,
     "debugger": true,
-    "fetch": true,
+    "fetch": true
   },
   "env": {
     "jest/globals": true
@@ -30,11 +30,11 @@
           "onMouseUp",
           "onKeyPress",
           "onKeyDown",
-          "onKeyUp",
-        ],
-      },
+          "onKeyUp"
+        ]
+      }
     ],
     "react/prefer-stateless-function": "off",
-    "default-case": "off",
+    "default-case": "off"
   }
 }

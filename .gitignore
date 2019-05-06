@@ -1,11 +1,8 @@
-# dependencies
 /node_modules
 
-# testing
 /coverage
+/dist
 
-# misc
-.DS_Store
 development.env
 production.env
 test.env

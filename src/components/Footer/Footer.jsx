@@ -1,4 +1,5 @@
 import React from 'react';
+import { pure } from 'recompose';
 import Style from './style/Footer.scss';
 
 const Footer = () => (
@@ -14,4 +15,4 @@ const Footer = () => (
   </div>
 );
 
-export default Footer;
+export default pure(Footer);

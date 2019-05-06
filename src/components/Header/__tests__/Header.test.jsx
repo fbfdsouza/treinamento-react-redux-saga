@@ -57,13 +57,4 @@ describe('<Header /> Tests', () => {
     expect(minimalProps.pushFn.mock.calls.length).toBe(1);
     done();
   });
-
-  it('should call openSidebarFn when click on hamburguer menu item', (done) => {
-    const wrapper = shallow(<Header {...minimalProps} />);
-    const menuItem = wrapper.find(MenuItem).filterWhere(item => item.children().type() === FaBars);
-    const menuItemAnchor = menuItem.dive().shallow().find('a').first();
-    menuItemAnchor.simulate('click', eventMockObject);
-    expect(minimalProps.openSidebarFn.mock.calls.length).toBe(1);
-    done();
-  });
 });

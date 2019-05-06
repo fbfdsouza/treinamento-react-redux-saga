@@ -1,25 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Style from './style/View.scss';
 
-class View extends Component {
+class View extends PureComponent {
   render() {
     const {
-      title, subtitle, header, sidebar, footer,
-      sidebarIsOpen, closeSidebarFn, children,
+      title, subtitle, header, footer, children,
     } = this.props;
     return (
       <div className={Style.root}>
         <div className={Style.container}>
-          {
-            sidebarIsOpen &&
-            <div className={Style.sidebarRoot}>
-              <div className={Style.sidebarContainer}>
-                {sidebar}
-              </div>
-              <div className={Style.sidebarBackdrop} onClick={closeSidebarFn} />
-            </div>
-          }
           <div>
             <div className={Style.headerContainer}>
               {header}
@@ -41,23 +31,20 @@ class View extends Component {
   }
 }
 
+View.defaultProps = {
+  subtitle: '',
+  children: undefined,
+};
+
 View.propTypes = {
   title: PropTypes.string.isRequired,
   header: PropTypes.node.isRequired,
-  sidebar: PropTypes.node.isRequired,
   footer: PropTypes.node.isRequired,
-  sidebarIsOpen: PropTypes.bool.isRequired,
-  closeSidebarFn: PropTypes.func.isRequired,
   subtitle: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
-};
-
-View.defaultProps = {
-  subtitle: '',
-  children: undefined,
 };
 
 export default View;
