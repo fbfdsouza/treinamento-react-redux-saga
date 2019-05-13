@@ -1,4 +1,5 @@
 ### React/Redux/Saga na Prática
+O objetivo deste treinamento é recriar o checkout do [Buscapé](https://www.buscape.com.br/celular-e-smartphone) usando a seção de [smartphones](https://www.buscape.com.br/celular-e-smartphone) como exemplo.
 
 ### Requirements
 [Node.js](https://nodejs.org/en/)(^v8.x)
