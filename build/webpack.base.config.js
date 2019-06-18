@@ -6,38 +6,38 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill','./src/main.jsx']
+    app: ['./src/main.jsx']
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      components: path.resolve(__dirname, '../src/components'),
-      scss: path.resolve(__dirname, '../src/scss')
+      components: path.resolve(process.cwd(), 'src/components'),
+      scss: path.resolve(process.cwd(), 'src/scss')
     }
   },
   plugins: [
     new Dotenv({
-      path: path.join(process.cwd(), process.env.NODE_ENV + '.env')   
+      path: path.join(process.cwd(), `${process.env.NODE_ENV}.env`)
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
+      template: path.resolve(process.cwd(), 'src/index.html'),
       inject: true
     })
   ],
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(m?js|jsx)$/,
         exclude: /node_modules/,
-        use:[
+        use: [
           {
-            loader: 'babel-loader',
+            loader: 'babel-loader'
           },
           {
-            loader: 'eslint-loader',
+            loader: 'eslint-loader'
           }
         ]
-      },
+      }
     ]
   },
   optimization: {
@@ -47,10 +47,10 @@ module.exports = {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: "all",
-          enforce: true,
-        },
+          chunks: 'all',
+          enforce: true
+        }
       }
     }
-  },
-}
+  }
+};

@@ -4,9 +4,7 @@ import ViewContainer from '../ViewContainer';
 
 class HomeContainer extends Component {
   render() {
-    return (
-      <ViewContainer title="Home page" />
-    );
+    return <ViewContainer title="Home page" />;
   }
 }
 

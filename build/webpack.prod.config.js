@@ -1,18 +1,19 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
-const clean = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const baseWebpackConfig = require('./webpack.base.config');
 const config = require('./config');
 
 const progressPluginHandler = (percentage, msg) => {
-  console.info(`${parseInt(percentage * 100).toFixed(0)}%`, msg);
+  // eslint-disable-next-line no-console
+  console.info(`${parseInt(percentage * 100, 10).toFixed(0)}%`, msg);
 };
 
 module.exports = merge(baseWebpackConfig, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/',
     filename: '[name].bundle.js'
   },
@@ -20,16 +21,19 @@ module.exports = merge(baseWebpackConfig, {
     rules: [
       {
         test: /\.scss?$/,
-        use:[
+        use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[name]__[local]'
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                context: path.resolve(process.cwd(), 'src')
+              },
+              importLoaders: 2
             }
           },
           {
@@ -40,7 +44,7 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: path.resolve(process.cwd(), 'dist'),
     historyApiFallback: true,
     hot: true,
     port: config.dev.port,
@@ -49,12 +53,10 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css',
+      chunkFilename: '[id].css'
     }),
-    new clean([
-      path.resolve(__dirname, '../dist')
-    ]),
+    new CleanWebpackPlugin(),
     new webpack.ProgressPlugin(progressPluginHandler)
   ],
-  stats: 'errors-only',
+  stats: 'errors-only'
 });

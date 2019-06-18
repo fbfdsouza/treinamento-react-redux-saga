@@ -5,24 +5,25 @@ import { router } from '../redux';
 import Header from '../components/Header';
 
 class HeaderContainer extends Component {
-  push = (href) => {
+  push(href) {
     const { pushAction } = this.props;
     pushAction(href);
   }
 
   render() {
-    return (
-      <Header pushFn={this.push} />
-    );
+    return <Header pushFn={this.push} />;
   }
 }
 
 HeaderContainer.propTypes = {
-  pushAction: PropTypes.func.isRequired,
+  pushAction: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
-  pushAction: router.actions.push,
+  pushAction: router.actions.push
 };
 
-export default connect(null, mapDispatchToProps)(HeaderContainer);
+export default connect(
+  null,
+  mapDispatchToProps
+)(HeaderContainer);

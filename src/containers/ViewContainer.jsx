@@ -7,17 +7,11 @@ import FooterContainer from './FooterContainer';
 
 class ViewContainer extends PureComponent {
   render() {
-    const {
-      children, ...others
-    } = this.props;
+    const { children, ...others } = this.props;
     return (
       <View
-        header={
-          <HeaderContainer />
-        }
-        footer={
-          <FooterContainer />
-        }
+        header={<HeaderContainer />}
+        footer={<FooterContainer />}
         {...others}
       >
         {children}
@@ -29,12 +23,12 @@ class ViewContainer extends PureComponent {
 ViewContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]),
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 };
 
 ViewContainer.defaultProps = {
-  children: undefined,
+  children: undefined
 };
 
 export default connect()(ViewContainer);

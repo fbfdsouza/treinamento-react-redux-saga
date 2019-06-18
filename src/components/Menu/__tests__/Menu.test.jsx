@@ -3,22 +3,18 @@ import { shallow } from 'enzyme';
 import Menu from '../Menu';
 
 const minimalProps = {
-  children: <div />,
+  children: <div />
 };
 
 describe('<Menu /> Tests', () => {
-  it('should render without exploding', (done) => {
-    const wrapper = shallow(
-      <Menu {...minimalProps}/>
-    );
+  it('should render without exploding', done => {
+    const wrapper = shallow(<Menu {...minimalProps} />);
     expect(wrapper).toHaveLength(1);
     done();
   });
 
-  it('should render correctly', (done) => {
-    const wrapper = shallow(
-      <Menu {...minimalProps}/>
-    );
+  it('should render correctly', done => {
+    const wrapper = shallow(<Menu {...minimalProps} />);
     expect(wrapper).toMatchSnapshot();
     done();
   });

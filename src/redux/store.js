@@ -6,24 +6,27 @@ import { asImmutable, isDevEnv } from '../utils';
 import * as modules from './modules';
 import * as allSagas from './sagas';
 
-const getReducers = () => Object.keys(modules).reduce((acc, curr) => {
+const getReducers = () =>
+  Object.keys(modules).reduce((acc, curr) => {
     const module = modules[curr];
     if (module.reducers && module.reducers.reducer) {
-        acc[module.constants.default] = module.reducers.reducer;
+      acc[module.constants.default] = module.reducers.reducer;
     }
     return acc;
-}, {});
+  }, {});
 
 export const createReduxStore = ({
   middlewares = [],
   initialState = {},
-  enhancers = [],
+  enhancers = []
 } = {}) => {
   const sagaMiddleware = createSagaMiddleware();
   if (isDevEnv()) {
-    middlewares.push(createLogger({
-      collapsed: true,
-    }));
+    middlewares.push(
+      createLogger({
+        collapsed: true
+      })
+    );
   }
   middlewares.push(sagaMiddleware);
   enhancers.push(applyMiddleware(...middlewares));
@@ -31,9 +34,11 @@ export const createReduxStore = ({
   const store = createStore(
     combineReducers(getReducers()),
     asImmutable(initialState),
-    enhancer,
+    enhancer
   );
-  store.sagas = Object.keys(allSagas).map(sagaName => sagaMiddleware.run(allSagas[sagaName]));
+  store.sagas = Object.keys(allSagas).map(sagaName =>
+    sagaMiddleware.run(allSagas[sagaName])
+  );
   store.cancelSagas = () => store.sagas.forEach(saga => saga.cancel());
   return store;
 };

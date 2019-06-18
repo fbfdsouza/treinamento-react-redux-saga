@@ -4,26 +4,21 @@ import Style from './style/View.scss';
 
 class View extends PureComponent {
   render() {
-    const {
-      title, subtitle, header, footer, children,
-    } = this.props;
+    const { title, subtitle, header, footer, children } = this.props;
+
     return (
       <div className={Style.root}>
         <div className={Style.container}>
           <div>
-            <div className={Style.headerContainer}>
-              {header}
-            </div>
+            <div className={Style.headerContainer}>{header}</div>
             <main className={Style.mainContainer}>
               <h2 className={Style.viewTitle}>{title}</h2>
-              {
-                subtitle && <div className={Style.subtitleContainer}>{subtitle}</div>
-              }
+              {subtitle && (
+                <div className={Style.subtitleContainer}>{subtitle}</div>
+              )}
               {children}
             </main>
-            <div className={Style.footerContainer}>
-              {footer}
-            </div>
+            <div className={Style.footerContainer}>{footer}</div>
           </div>
         </div>
       </div>
@@ -33,7 +28,7 @@ class View extends PureComponent {
 
 View.defaultProps = {
   subtitle: '',
-  children: undefined,
+  children: undefined
 };
 
 View.propTypes = {
@@ -43,8 +38,8 @@ View.propTypes = {
   subtitle: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]),
+    PropTypes.arrayOf(PropTypes.node)
+  ])
 };
 
 export default View;

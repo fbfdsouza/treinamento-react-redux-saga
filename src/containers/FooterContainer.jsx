@@ -3,9 +3,7 @@ import Footer from '../components/Footer';
 
 class FooterContainer extends Component {
   render() {
-    return (
-      <Footer />
-    );
+    return <Footer />;
   }
 }
 

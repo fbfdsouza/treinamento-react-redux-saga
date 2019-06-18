@@ -50,7 +50,7 @@ function* routerSaga() {
     watchReplace(),
     watchGo(),
     watchBack(),
-    wawtchForward(),
+    wawtchForward()
   ]);
 }
 

@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { pure } from 'recompose';
 import Style from './style/Anchor.scss';
 
-const Anchor = ({
-  href, onClick, title, children, style,
-}) => (
+const Anchor = ({ href, onClick, title, children, style }) => (
   <a className={style.root} href={href} onClick={onClick} title={title}>
-    { children }
+    {children}
   </a>
 );
 
@@ -15,7 +13,7 @@ Anchor.defaultProps = {
   href: '#',
   title: undefined,
   onClick: undefined,
-  style: Style,
+  style: Style
 };
 
 Anchor.propTypes = {
@@ -25,8 +23,8 @@ Anchor.propTypes = {
   style: PropTypes.objectOf(PropTypes.any),
   children: PropTypes.oneOfType([
     PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node),
-  ]).isRequired,
+    PropTypes.arrayOf(PropTypes.node)
+  ]).isRequired
 };
 
 export default pure(Anchor);

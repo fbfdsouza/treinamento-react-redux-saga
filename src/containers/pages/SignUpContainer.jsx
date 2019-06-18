@@ -3,11 +3,7 @@ import ViewContainer from '../ViewContainer';
 
 class SignUpContainer extends Component {
   render() {
-    return (
-      <ViewContainer title="Sign Up page">
-        page content
-      </ViewContainer>
-    );
+    return <ViewContainer title="Sign Up page">page content</ViewContainer>;
   }
 }
 

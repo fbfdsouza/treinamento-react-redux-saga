@@ -11,15 +11,13 @@ const store = createReduxStore();
 
 window.reduxStore = store;
 
-getHistory().listen((location) => {
+getHistory().listen(location => {
   store.dispatch(router.actions.routeChange(location));
 });
 
 ReactDOM.render(
-    (
-      <Provider store={store}>
-        <AppContainer />
-      </Provider>
-    ),
-    document.getElementById('app'),
-  );
+  <Provider store={store}>
+    <AppContainer />
+  </Provider>,
+  document.getElementById('app')
+);

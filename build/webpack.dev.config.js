@@ -1,31 +1,34 @@
 const webpack = require('webpack');
 const path = require('path');
-const baseWebpackConfig = require('./webpack.base.config');
 const merge = require('webpack-merge');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const baseWebpackConfig = require('./webpack.base.config');
 const config = require('./config');
 
 module.exports = merge(baseWebpackConfig, {
   output: {
-    path: path.resolve(__dirname, '../src'),
+    path: path.resolve(process.cwd(), 'src'),
     publicPath: config.dev.publicAssetsPath,
     filename: '[name].js'
   },
   module: {
-    rules:[
+    rules: [
       {
         test: /\.scss?$/,
-        use:[
+        use: [
           {
             loader: 'style-loader'
           },
           {
             loader: 'css-loader',
             options: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[name]__[local]'
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                context: path.resolve(process.cwd(), 'src')
+              },
+              importLoaders: 2
             }
           },
           {
@@ -36,7 +39,7 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, '../src'),
+    contentBase: path.resolve(process.cwd(), 'src'),
     historyApiFallback: true,
     hot: true,
     port: config.dev.port,
@@ -45,8 +48,8 @@ module.exports = merge(baseWebpackConfig, {
   devtool: 'eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new BundleAnalyzerPlugin(),
-    new DashboardPlugin(),
-  ],
+    // new webpack.NoEmitOnErrorsPlugin(),
+    // new BundleAnalyzerPlugin(),
+    new DashboardPlugin()
+  ]
 });

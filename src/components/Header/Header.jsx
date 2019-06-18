@@ -8,20 +8,31 @@ import menuItemStyle from '../MenuItem/style/MenuItem.scss';
 import Style from './style/Header.scss';
 
 class Header extends PureComponent {
-  goToHome = (e) => {
+  constructor() {
+    super();
+
+    this.goToHome = this.goToHome.bind(this);
+    this.goToSignIn = this.goToSignIn.bind(this);
+    this.goToSignUp = this.goToSignUp.bind(this);
+  }
+
+  goToHome(e) {
     const { pushFn } = this.props;
+
     e.preventDefault();
     pushFn('/');
   }
 
-  goToSignIn = (e) => {
+  goToSignIn(e) {
     const { pushFn } = this.props;
+
     e.preventDefault();
     pushFn('/signin');
   }
 
-  goToSignUp = (e) => {
+  goToSignUp(e) {
     const { pushFn } = this.props;
+
     e.preventDefault();
     pushFn('/signup');
   }
@@ -35,7 +46,10 @@ class Header extends PureComponent {
               <MenuItem
                 href="/"
                 onClick={this.goToHome}
-                style={{ ...menuItemStyle, container: Style.menuItem__container }}
+                style={{
+                  ...menuItemStyle,
+                  container: Style.menuItem__container
+                }}
               >
                 Home
               </MenuItem>
@@ -64,7 +78,7 @@ class Header extends PureComponent {
 }
 
 Header.propTypes = {
-  pushFn: PropTypes.func.isRequired,
+  pushFn: PropTypes.func.isRequired
 };
 
 export default Header;

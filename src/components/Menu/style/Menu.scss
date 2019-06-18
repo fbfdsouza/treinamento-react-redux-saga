@@ -10,10 +10,10 @@
 }
 
 .menuItem__root {
-  composes: root from 'components/MenuItem/style/MenuItem.scss';
+  composes: root from '../../MenuItem/style/MenuItem.scss';
 }
 
 .menuItem__container {
-  composes: container from 'components/MenuItem/style/MenuItem.scss';
+  composes: container from '../../MenuItem/style/MenuItem.scss';
   background-color: #fc0;
 }
