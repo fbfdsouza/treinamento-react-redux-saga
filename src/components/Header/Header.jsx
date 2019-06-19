@@ -8,34 +8,23 @@ import menuItemStyle from '../MenuItem/style/MenuItem.scss';
 import Style from './style/Header.scss';
 
 class Header extends PureComponent {
-  constructor() {
-    super();
-
-    this.goToHome = this.goToHome.bind(this);
-    this.goToSignIn = this.goToSignIn.bind(this);
-    this.goToSignUp = this.goToSignUp.bind(this);
-  }
-
-  goToHome(e) {
+  goToHome = e => {
     const { pushFn } = this.props;
-
     e.preventDefault();
     pushFn('/');
-  }
+  };
 
-  goToSignIn(e) {
+  goToSignIn = e => {
     const { pushFn } = this.props;
-
     e.preventDefault();
     pushFn('/signin');
-  }
+  };
 
-  goToSignUp(e) {
+  goToSignUp = e => {
     const { pushFn } = this.props;
-
     e.preventDefault();
     pushFn('/signup');
-  }
+  };
 
   render() {
     return (

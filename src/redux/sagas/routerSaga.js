@@ -45,13 +45,7 @@ function* wawtchForward() {
 }
 
 function* routerSaga() {
-  yield all([
-    watchPush(),
-    watchReplace(),
-    watchGo(),
-    watchBack(),
-    wawtchForward()
-  ]);
+  yield all([watchPush(), watchReplace(), watchGo(), watchBack(), wawtchForward()]);
 }
 
 export default routerSaga;

@@ -31,9 +31,7 @@ describe('<Header /> Tests', () => {
 
   it('should call pushFn when click on Home menu item', done => {
     const wrapper = shallow(<Header {...minimalProps} />);
-    const menuItem = wrapper
-      .find(MenuItem)
-      .filterWhere(item => item.children().contains('Home'));
+    const menuItem = wrapper.find(MenuItem).filterWhere(item => item.children().contains('Home'));
     const menuItemAnchor = menuItem
       .dive()
       .shallow()

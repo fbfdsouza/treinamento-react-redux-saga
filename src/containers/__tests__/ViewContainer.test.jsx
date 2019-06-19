@@ -29,11 +29,7 @@ describe('<ViewContainer /> Tests', () => {
   it('should render correctly with header prop', done => {
     const testStore = createReduxTestStore();
     const wrapper = shallow(
-      <ViewContainer
-        store={testStore}
-        header={<div className="header" />}
-        {...minimalProps}
-      />
+      <ViewContainer store={testStore} header={<div className="header" />} {...minimalProps} />
     );
     expect(wrapper.dive().shallow()).toMatchSnapshot();
     done();
@@ -42,11 +38,7 @@ describe('<ViewContainer /> Tests', () => {
   it('should render correctly with footer prop', done => {
     const testStore = createReduxTestStore();
     const wrapper = shallow(
-      <ViewContainer
-        store={testStore}
-        footer={<div className="footer" />}
-        {...minimalProps}
-      />
+      <ViewContainer store={testStore} footer={<div className="footer" />} {...minimalProps} />
     );
     expect(wrapper.dive().shallow()).toMatchSnapshot();
     done();

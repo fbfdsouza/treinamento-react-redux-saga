@@ -22,10 +22,7 @@ MenuItem.propTypes = {
   title: PropTypes.string,
   onClick: PropTypes.func,
   style: PropTypes.objectOf(PropTypes.any),
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };
 
 export default MenuItem;

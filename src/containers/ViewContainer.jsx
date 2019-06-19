@@ -9,11 +9,7 @@ class ViewContainer extends PureComponent {
   render() {
     const { children, ...others } = this.props;
     return (
-      <View
-        header={<HeaderContainer />}
-        footer={<FooterContainer />}
-        {...others}
-      >
+      <View header={<HeaderContainer />} footer={<FooterContainer />} {...others}>
         {children}
       </View>
     );
@@ -21,10 +17,7 @@ class ViewContainer extends PureComponent {
 }
 
 ViewContainer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
 };
 
 ViewContainer.defaultProps = {

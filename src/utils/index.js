@@ -1,8 +1,7 @@
 import { Iterable, fromJS } from 'immutable';
 import { createBrowserHistory } from 'history';
 
-export const asImmutable = obj =>
-  Iterable.isIterable(obj) ? obj : fromJS(obj);
+export const asImmutable = obj => (Iterable.isIterable(obj) ? obj : fromJS(obj));
 
 export const emptyMap = asImmutable({});
 

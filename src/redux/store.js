@@ -15,11 +15,7 @@ const getReducers = () =>
     return acc;
   }, {});
 
-export const createReduxStore = ({
-  middlewares = [],
-  initialState = {},
-  enhancers = []
-} = {}) => {
+export const createReduxStore = ({ middlewares = [], initialState = {}, enhancers = [] } = {}) => {
   const sagaMiddleware = createSagaMiddleware();
   if (isDevEnv()) {
     middlewares.push(
@@ -31,14 +27,8 @@ export const createReduxStore = ({
   middlewares.push(sagaMiddleware);
   enhancers.push(applyMiddleware(...middlewares));
   const enhancer = compose(...enhancers);
-  const store = createStore(
-    combineReducers(getReducers()),
-    asImmutable(initialState),
-    enhancer
-  );
-  store.sagas = Object.keys(allSagas).map(sagaName =>
-    sagaMiddleware.run(allSagas[sagaName])
-  );
+  const store = createStore(combineReducers(getReducers()), asImmutable(initialState), enhancer);
+  store.sagas = Object.keys(allSagas).map(sagaName => sagaMiddleware.run(allSagas[sagaName]));
   store.cancelSagas = () => store.sagas.forEach(saga => saga.cancel());
   return store;
 };

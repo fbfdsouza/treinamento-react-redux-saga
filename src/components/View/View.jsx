@@ -13,9 +13,7 @@ class View extends PureComponent {
             <div className={Style.headerContainer}>{header}</div>
             <main className={Style.mainContainer}>
               <h2 className={Style.viewTitle}>{title}</h2>
-              {subtitle && (
-                <div className={Style.subtitleContainer}>{subtitle}</div>
-              )}
+              {subtitle && <div className={Style.subtitleContainer}>{subtitle}</div>}
               {children}
             </main>
             <div className={Style.footerContainer}>{footer}</div>
@@ -36,10 +34,7 @@ View.propTypes = {
   header: PropTypes.node.isRequired,
   footer: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
 };
 
 export default View;
