@@ -1,4 +1,9 @@
-# React/Redux/Saga na Prática
+<p align="center">
+  <img  width="15%" src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" />
+</p>
+<p align="center">
+  <strong>Treinamento React/Redux/Saga</strong>
+</p>
 
 O objetivo deste treinamento é recriar o checkout do
 [Buscapé](https://www.buscape.com.br/celular-e-smartphone) usando a seção de
