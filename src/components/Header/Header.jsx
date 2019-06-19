@@ -1,13 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Menu from '../Menu';
-import MenuItem from '../MenuItem';
-import menuStyle from '../Menu/style/Menu.scss';
-import menuItemStyle from '../MenuItem/style/MenuItem.scss';
-
+import SearchBar from 'components/SearchBar';
 import Style from './style/Header.scss';
 
 class Header extends PureComponent {
+  onSearch = e => {
+    e.preventDefault();
+    window.alert('cliquei na busca');
+  };
+
+  onChangeSearch = e => {
+    console.log(e);
+  };
+
   goToHome = e => {
     const { pushFn } = this.props;
     e.preventDefault();
@@ -27,47 +32,32 @@ class Header extends PureComponent {
   };
 
   render() {
+    const { onSearchFn, onChangeSearchFn } = this.props;
     return (
       <header className={Style.root}>
         <div className={Style.container}>
-          <div className={Style.contentLeftContainer}>
-            <Menu style={{ ...menuStyle, root: Style.menu__root }}>
-              <MenuItem
-                href="/"
-                onClick={this.goToHome}
-                style={{
-                  ...menuItemStyle,
-                  container: Style.menuItem__container
-                }}
-              >
-                Home
-              </MenuItem>
-            </Menu>
+          <div className={Style.contentLeftContainer}>logo</div>
+          <div className={Style.contentCenterContainer}>
+            <SearchBar onSearchFn={onSearchFn} onChangeFn={onChangeSearchFn} />
           </div>
-          <div className={Style.contentRightContainer}>
-            <MenuItem
-              href="signin"
-              onClick={this.goToSignIn}
-              style={{ ...menuItemStyle, container: Style.menuItem__container }}
-            >
-              Sign In
-            </MenuItem>
-            <MenuItem
-              href="signup"
-              onClick={this.goToSignUp}
-              style={{ ...menuItemStyle, container: Style.menuItem__container }}
-            >
-              Sign Up
-            </MenuItem>
-          </div>
+          <div className={Style.contentRightContainer}>card</div>
         </div>
       </header>
     );
   }
 }
 
+Header.defaultProps = {
+  onSearchFn: undefined,
+  onChangeSearchFn: undefined,
+};
+
 Header.propTypes = {
-  pushFn: PropTypes.func.isRequired
+  // required
+  pushFn: PropTypes.func.isRequired,
+  // optional
+  onSearchFn: PropTypes.func,
+  onChangeSearchFn: PropTypes.func,
 };
 
 export default Header;

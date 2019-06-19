@@ -20,7 +20,7 @@ export const createReduxTestStore = ({ configs = {} } = {}) => {
     expectedActions.push({
       type: actionType,
       isDispatched: false,
-      assertion
+      assertion,
     });
   };
 
@@ -34,7 +34,7 @@ export const createReduxTestStore = ({ configs = {} } = {}) => {
           // expectedAction.isDispatched = true;
           expectedAction.assertion({
             state,
-            action: lastAction
+            action: lastAction,
           });
         }
       });

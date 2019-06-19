@@ -26,7 +26,7 @@ class View extends PureComponent {
 
 View.defaultProps = {
   subtitle: '',
-  children: undefined
+  children: undefined,
 };
 
 View.propTypes = {
@@ -34,7 +34,7 @@ View.propTypes = {
   header: PropTypes.node.isRequired,
   footer: PropTypes.node.isRequired,
   subtitle: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
 
 export default View;

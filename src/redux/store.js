@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { combineReducers } from 'redux-immutable';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { asImmutable, isDevEnv } from '../utils';
@@ -20,13 +21,13 @@ export const createReduxStore = ({ middlewares = [], initialState = {}, enhancer
   if (isDevEnv()) {
     middlewares.push(
       createLogger({
-        collapsed: true
-      })
+        collapsed: true,
+      }),
     );
   }
   middlewares.push(sagaMiddleware);
   enhancers.push(applyMiddleware(...middlewares));
-  const enhancer = compose(...enhancers);
+  const enhancer = composeWithDevTools(...enhancers);
   const store = createStore(combineReducers(getReducers()), asImmutable(initialState), enhancer);
   store.sagas = Object.keys(allSagas).map(sagaName => sagaMiddleware.run(allSagas[sagaName]));
   store.cancelSagas = () => store.sagas.forEach(saga => saga.cancel());

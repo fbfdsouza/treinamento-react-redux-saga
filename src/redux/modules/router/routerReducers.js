@@ -3,11 +3,11 @@ import * as actions from './routerActions';
 
 const initialState = asImmutable({
   current: {
-    pathname: '/'
+    pathname: '/',
   },
   previous: {
-    pathname: '/'
-  }
+    pathname: '/',
+  },
 });
 
 export const reducer = (state = initialState, action) => {
@@ -16,8 +16,8 @@ export const reducer = (state = initialState, action) => {
       return state.merge(
         asImmutable({
           previous: state.get('current'),
-          current: action.payload
-        })
+          current: action.payload,
+        }),
       );
     default:
       return state;

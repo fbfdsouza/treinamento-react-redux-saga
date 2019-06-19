@@ -12,35 +12,35 @@ export const routeChange = ({ pathname, search, hash }) => ({
   payload: {
     pathname,
     search,
-    hash
-  }
+    hash,
+  },
 });
 
 export const push = href => ({
   type: PUSH,
   payload: {
-    href
-  }
+    href,
+  },
 });
 
 export const replace = href => ({
   type: REPLACE,
   payload: {
-    href
-  }
+    href,
+  },
 });
 
 export const go = index => ({
   type: GO,
   payload: {
-    index
-  }
+    index,
+  },
 });
 
 export const back = () => ({
-  type: BACK
+  type: BACK,
 });
 
 export const forward = () => ({
-  type: FORWARD
+  type: FORWARD,
 });

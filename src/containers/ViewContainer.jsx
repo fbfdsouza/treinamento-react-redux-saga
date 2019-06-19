@@ -17,11 +17,11 @@ class ViewContainer extends PureComponent {
 }
 
 ViewContainer.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)])
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
 };
 
 ViewContainer.defaultProps = {
-  children: undefined
+  children: undefined,
 };
 
 export default connect()(ViewContainer);

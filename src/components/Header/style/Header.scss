@@ -1,8 +1,8 @@
-@import "./Header.variables";
+@import './Header.variables';
 
 .root {
-  padding-left: $defaultPadding;
-  padding-right: $defaultPadding;
+  padding-left: $default-padding;
+  padding-right: $default-padding;
   background-color: $headerBgColor;
 }
 
@@ -18,16 +18,11 @@
   display: flex;
 }
 
+.contentCenterContainer {
+  display: flex;
+  flex-basis: 700px;
+}
+
 .contentRightContainer {
   display: flex;
-}
-
-.menu__root {
-  composes: root from '../../Menu/style/Menu.scss';
-  display: flex;
-}
-
-.menuItem__container {
-  composes: container from '../../MenuItem/style/MenuItem.scss';
-  color: $headerColor;
 }
