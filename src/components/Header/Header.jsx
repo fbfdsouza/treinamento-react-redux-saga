@@ -58,7 +58,7 @@ class Header extends PureComponent {
           <div className={Style.contentRightContainer}>card</div>
         </div>
 
-        <div>
+        <div className={Style.shrinkDiv}>
           <MainMenu>
             <Menu>
               <MenuItem icon={faMobileAlt}>Celulares</MenuItem>
